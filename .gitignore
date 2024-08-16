@@ -1,0 +1,5 @@
+
+.DS_Store
+/java/.idea
+/java/target
+php/jsonproto/.editorconfig

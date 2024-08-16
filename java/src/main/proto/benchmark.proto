@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "io.belac.blog";
+option java_outer_classname = "TripGrpcProto";
+
+package benchmark;
+
+
+message Trip {
+  string id = 1;
+  string code = 2;
+  string externalId = 3;
+  string department = 4;
+  string driverName = 5;
+  string driverMobile = 6;
+  string vehicleRegistration = 7;
+  string vehicleType = 8;
+  google.protobuf.Timestamp plannedStartAt = 9;
+  google.protobuf.Timestamp plannedEndAt = 10;
+  google.protobuf.Timestamp actualStartAt = 11;
+  google.protobuf.Timestamp actualEndAt = 12;
+  TripStatus status = 13;
+  repeated Transport transports = 14;
+  google.protobuf.Timestamp  createdAt = 15;
+  google.protobuf.Timestamp updatedAt = 16;
+}
+
+enum TripStatus{CREATED=0;PLANNING=1;PLANNED=2;IN_PROGRESS=3;COMPLETED=4;CANCELLED=5;};
+
+message Transport {
+  string id = 1;
+  string code = 2;
+  string externalId = 3;
+  google.protobuf.Timestamp plannedStartAt = 4;
+  google.protobuf.Timestamp plannedEndAt = 5;
+  google.protobuf.Timestamp actualStartAt = 6;
+  google.protobuf.Timestamp actualEndAt = 7;
+  double cost = 8;
+  double travelTime = 9;
+  repeated Package packages = 10;
+}
+
+
+message Package {
+  string barcode = 1;
+  double weight = 2;
+  double volume = 3;
+  double length = 4;
+  double width = 5;
+  double height = 6;
+}
